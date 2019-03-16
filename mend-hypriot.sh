@@ -9,7 +9,6 @@ img="${1:?}"
 dev="$(losetup --show -f -P "$img")"
 echo "$dev"
 
-
 function cleanup {
   cd /
 
