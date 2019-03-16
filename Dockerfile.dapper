@@ -1,0 +1,13 @@
+FROM alpine:latest
+LABEL maintainer="Ryan Schlesinger <ryan@ryanschlesinger.com>"
+
+RUN apk --no-cache add util-linux bash
+
+ENV DAPPER_RUN_ARGS --privileged -v /dev:/dev
+ENV DAPPER_MODE bind
+ENV DAPPER_SOURCE /source
+WORKDIR ${DAPPER_SOURCE}
+
+COPY mend-hypriot.sh /usr/local/bin/
+
+ENTRYPOINT ["mend-hypriot.sh"]
